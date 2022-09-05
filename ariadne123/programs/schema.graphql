@@ -1,0 +1,18 @@
+scalar DateTime
+scalar Date
+scalar File
+
+type Query {
+  books: [Book]!
+}
+
+type Mutation {
+  create_book(title: String!, published_at: Date!): Book!
+}
+
+type Book {
+  title: String!
+  pages: Int!
+  published_at: Date!
+  pk: Int!
+}
