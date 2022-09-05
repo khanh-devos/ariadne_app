@@ -33,8 +33,21 @@ function mutateNewBook(data){
 }
   return axios.post(API, body).then((response) => {
     // console.log("response.data.data")
-    // console.log(response.data.data)
-    return response.data.data})
+    console.log(response.data.data)
+
+    if (response.data.data) {
+      return response.data.data  
+    } 
+    else {
+      let note = document.getElementById("Error-ID");
+      note.textContent = "book created failed !".toUpperCase();
+      setTimeout(()=>{
+        note.textContent = null;
+      }, 4000);
+
+    }
+  })
+    
 }
 
 
@@ -56,6 +69,7 @@ function Createbooks () {
 
 return (<>
   <h3>new book</h3>
+  <p id={'Error-ID'} style={{color: "red"}}></p>
   <form onSubmit={handleSubmit(submit)} >
     
     <Input Label="title" Type="text" register={register}  />
