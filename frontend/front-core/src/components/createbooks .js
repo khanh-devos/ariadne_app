@@ -3,19 +3,37 @@ import axios from "axios";
 import { useForm } from 'react-hook-form';
 
 
+export const Input = ({ Label, Style, Type, ID, register, required }) =>{ 
+  
+  return (<div>
+    <label>{Label} : </label> 
+    
+    { Type!=='checkbox' ? (Type!=="file" ? '' : '' ): '' }
+
+    <input type={Type} id={ID} style={Style} {...register(Label, { required } )} 
+           className="input-class-0"
+    />
+    
+  </div>
+)}
+
 const API = "http://127.0.0.1:8000/graphql/" 
 
 function mutateNewBook(data){
   const body = {
-    query: `mutation {
-        create_book {
-          title: ${data.title}
-          published_at: ${data.published_at}
+    query: ` mutation {
+        create_book (
+          title: "${data.title}",
+          published_at: "${data.published_at}"
+        )
+        {
+          title
         }
     }`
 }
   return axios.post(API, body).then((response) => {
-    console.log(response.data.data)
+    // console.log("response.data.data")
+    // console.log(response.data.data)
     return response.data.data})
 }
 
@@ -29,7 +47,8 @@ function Createbooks () {
   })
 
   const submit = (data)=>{
-    console.log(data);
+    // console.log("data");
+    // console.log(data);
     mutateNewBook(data);
 
   }
@@ -38,11 +57,10 @@ function Createbooks () {
 return (<>
   <h3>new book</h3>
   <form onSubmit={handleSubmit(submit)} >
-    <label>title</label>
-    <input type="text" value="React 1" />
+    
+    <Input Label="title" Type="text" register={register}  />
 
-    <label>published_at:</label>
-    <input type="text" value="2022-09-05" />
+    <Input Label="published_at" Type="text" register={register}  />
 
     <br /><br />
     <input type="submit" />

@@ -55,9 +55,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://192.168.1.19:3000'
+    'http://localhost:3005',
+    'http://127.0.0.1:3005',
+    'http://192.168.1.19:3005'
 ]
 
 ROOT_URLCONF = 'ariadne123.urls'

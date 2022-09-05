@@ -20,7 +20,7 @@ class Book(models.Model):
                               on_delete=models.CASCADE,
                               null=True)
     
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     pages = models.PositiveIntegerField(default=100)
     
     published_at = models.DateField(null=True, default=None)

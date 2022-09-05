@@ -8,7 +8,7 @@ from ariadne import convert_kwargs_to_snake_case
 
 @convert_kwargs_to_snake_case
 def list_books(*_):
-    return Book.objects.all()
+    return Book.objects.order_by("pk").reverse()[:5]
 
 
 @convert_kwargs_to_snake_case

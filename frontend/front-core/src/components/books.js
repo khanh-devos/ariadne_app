@@ -35,12 +35,12 @@ function Books() {
 
     return () => (mounted = false);
 
-  }, []);
+  }, [books]);
 
 
   return (
     <div 
-    >These books are from the ariadne API
+    >These books are the latest 5 ones from the ariadne API
     <ul style={{width: "400px", textAlign: "left", marginLeft: "50px"}} >
     {
         books.map(item => {
