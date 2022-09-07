@@ -35,7 +35,7 @@ function Books() {
 
     return () => (mounted = false);
 
-  }, [books]);
+  }, []);
 
 
   return (

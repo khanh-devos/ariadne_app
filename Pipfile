@@ -10,6 +10,7 @@ ariadne = {extras = ["asgi-file-uploads"], version = "*"}
 ariadne-django = "*"
 python-dateutil = "*"
 django-cors-headers = "*"
+ariadne-jwt = "*"
 
 [dev-packages]
 

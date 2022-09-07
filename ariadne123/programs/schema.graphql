@@ -1,13 +1,22 @@
 scalar DateTime
 scalar Date
-scalar File
+scalar Upload
 
 type Query {
-  books: [Book]!
+  books(token: String): [Book]!
+  me: UserNode
 }
 
 type Mutation {
+  #create_book(title: String!, published_at: Date!, cover: Upload!): Book!
   create_book(title: String!, published_at: Date!): Book!
+  login(username: String!, password: String!): String
+  logout: Boolean!
+  create_user(username: String!, password: String!): UserNode
+
+  verifyToken(token: String!): VerifyToken
+  refreshToken(token: String!): RefreshToken
+  tokenAuth(username: String!, password: String!): TokenAuth
 }
 
 type Book {
@@ -15,4 +24,21 @@ type Book {
   pages: Int!
   published_at: Date!
   pk: Int!
+}
+
+type TokenAuth {
+  token: String!
+}
+
+type VerifyToken {
+  payload: UserNode
+}
+
+type RefreshToken {
+  token: String!
+  payload: UserNode
+}
+
+type UserNode {
+  username: String
 }
